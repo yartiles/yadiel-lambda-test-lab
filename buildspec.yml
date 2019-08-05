@@ -1,0 +1,13 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - npm ci
+  build:
+    commands:
+      - npm run check-lint
+      - npm run cover
+      - npm run check-coverage
+  post_build:
+    commands:
+      - npx serverless deploy --stage prod

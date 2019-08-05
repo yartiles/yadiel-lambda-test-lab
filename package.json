@@ -1,0 +1,51 @@
+{
+  "name": "aws-lambda-function-nodejs-template",
+  "version": "0.0.0",
+  "description": "Template for lambda-functions",
+  "scripts": {
+    "cover": "nyc -x test --reporter=lcov --reporter=text mocha --recursive",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "check-lint": "standard *.js lib/*.js test/*.js",
+    "fix-lint": "standard --fix *.js lib/*.js test/*.js",
+    "test": "mocha --recursive"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run check-lint && npm test",
+      "pre-push": "npm run cover && npm run check-coverage"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EveryMundo/aws-lambda-function-nodejs-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EveryMundo/aws-lambda-function-nodejs-template/issues"
+  },
+  "homepage": "https://github.com/EveryMundo/aws-lambda-function-nodejs-template#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dotenv": "^8.0.0",
+    "ghooks": "^2.0.4",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "serverless-aws-alias": "^1.7.2",
+    "serverless-plugin-aws-alerts": "^1.4.0",
+    "sinon": "^7.4.0",
+    "standard": "^13.1.0"
+  },
+  "dependencies": {
+    "@everymundo/aws-s3-client": "^1.0.0",
+    "@everymundo/promise-data-to": "^1.3.0",
+    "@everymundo/simple-logr": "^1.2.2",
+    "pino": "^5.13.1"
+  }
+}
